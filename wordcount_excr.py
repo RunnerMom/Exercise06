@@ -22,13 +22,17 @@ for line in txt: #creates the our_dict from the file txt
 	#takes in string, lowercases it, then strips new lines and punctuation
 	for word in line.lower().strip('\n').replace(".", "").replace(",", "").replace("?","").split():
 		#sets word that doesn't exist to zero
-		our_dict[word]=our_dict.get(word,0) + 1
+		our_dict[word]=our_dict.get(word,0) - 1
 	
 
 
 # sorts by values, starting with the largest
-#for key, value in sorted(our_dict.iteritems(), key=lambda (k,v): (v,ord(chr(k))), reverse=True):
-for key, value in sorted(our_dict.iteritems(), key=lambda (k,v): (v,k), reverse=True):
-#for key, value in sorted(our_dict.iteritems()):
-  print "%s: %s" % (key, value)
+
+for key, value in sorted(our_dict.iteritems(), key=lambda (k,v): (v,k)):
+
+
+
+#WORKS, except last sort ->>for key, value in sorted(our_dict.iteritems(), key=lambda (k,v): (v,k), reverse=True):
+
+  print "%s: %s" % (key, -value)
 
